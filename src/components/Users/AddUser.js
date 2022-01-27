@@ -3,6 +3,7 @@ import Card from "../UI/Card";
 import classes from "./AddUser.module.css"
 import Button from "../UI/Button";
 import ErrorModal from "../UI/ErrorModal";
+import Wrapper from "../Helpers/Wrapper";
 
 const AddUser = props =>{
     const [enteredName,setEnteredName]=useState('');
@@ -41,18 +42,18 @@ const AddUser = props =>{
     }
 
 return(
-    <div >
+    <Wrapper>
      {error && <ErrorModal title={error.title} message={error.message} onConfirm={onErrorHandler}/>   }
-    <Card className={classes.input}>
-        <form onSubmit={addUserHandler}>
-            <label htmlFor="username">User Name</label>
-            <input id="username" type="text" value={enteredName} onChange={userNameHandler} />
-            <label htmlFor="age">Age (in years)</label>
-            <input id="age" type="number" value={enteredAge} onChange={userAgeHandler} />
-            <Button type="submit">Submit</Button>
-        </form>
-    </Card>
-    </div>
+        <Card className={classes.input}>
+            <form onSubmit={addUserHandler}>
+                <label htmlFor="username">User Name</label>
+                <input id="username" type="text" value={enteredName} onChange={userNameHandler} />
+                <label htmlFor="age">Age (in years)</label>
+                <input id="age" type="number" value={enteredAge} onChange={userAgeHandler} />
+                <Button type="submit">Submit</Button>
+            </form>
+        </Card>
+    </Wrapper>
 );
 }
 
